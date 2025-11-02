@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retro TV Dialog</title>
+
+<!-- Font Awesome icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+body {
+  background: radial-gradient(circle at top, #222, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* ------------------------- */
+/* 📺 DIALOG = RETRO TV BODY */
+/* ------------------------- */
+dialog {
+  width: 700px;
+  height: 500px;
+  border: 8px solid #3a2f25;
+  border-radius: 30px;
+  background: radial-gradient(circle at center, #222 40%, #000 100%);
+  box-shadow:
+    0 0 0 10px #7a5b3e,
+    0 20px 40px rgba(0,0,0,0.6);
+  color: #fff;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 0;
+}
+
+/* 📡 Antenne */
+dialog::before, dialog::after {
+  content: "";
+  position: absolute;
+  top: -50px;
+  width: 4px;
+  height: 50px;
+  background: #7a5b3e;
+}
+dialog::before { left: 20%; transform: rotate(-20deg); }
+dialog::after  { right: 20%; transform: rotate(20deg); }
+
+/* 🔤 Titelzeile */
+header {
+  background: #3a2f25;
+  padding: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h2 {
+  margin: 0;
+  color: #f0d7b3;
+}
+
+/* ❌ Close Button */
+.close-btn {
+  background: none;
+  border: none;
+  color: #f0d7b3;
+  font-size: 22px;
+  cursor: pointer;
+}
+.close-btn:hover {
+  color: #fff;
+}
+
+/* 📸 Foto-Bereich */
+.dialogImgCSS {
+  width: 90%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 20px;
+  margin: 20px auto;
+  display: block;
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.1);
+  animation: flicker 1s infinite alternate;
+}
+
+/* 📼 Knöpfe unten */
+footer {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding-bottom: 20px;
+}
+footer button {
+  background: #7a5b3e;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px #4d3b2c;
+  transition: 0.2s;
+}
+footer button:hover {
+  background: #a06d40;
+  transform: scale(1.1);
+}
+
+/* 💡 CRT flicker effect */
+@keyframes flicker {
+  0% { opacity: 0.97; filter: brightness(1); }
+  100% { opacity: 1; filter: brightness(1.1) contrast(1.1); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🖥️ Dialog (Retro TV) -->
+<dialog id="dlgID">
+  <header>
+    <h2 id="dialogTitle">Album 1</h2>
+    <button onclick="closeDialog()" class="close-btn">
+      <i class="fa fa-xmark"></i>
+    </button>
+  </header>
+
+  <img id="dialogImg" class="dialogImgCSS" src="https://picsum.photos/800/500" alt="Album Foto">
+
+  <footer>
+    <button id="prevBtn"><i class="fa fa-chevron-left"></i></button>
+    <button id="nextBtn"><i class="fa fa-chevron-right"></i></button>
+  </footer>
+</dialog>
+
+<script>
+// JavaScript für Navigation
+const dlg = document.getElementById("dlgID");
+const img = document.getElementById("dialogImg");
+const title = document.getElementById("dialogTitle");
+
+let current = 1;
+
+const photos = [
+  "https://picsum.photos/id/1015/800/500",
+  "https://picsum.photos/id/1025/800/500",
+  "https://picsum.photos/id/1035/800/500"
+];
+
+document.getElementById("nextBtn").onclick = () => {
+  current = (current + 1) % photos.length;
+  img.src = photos[current];
+  title.textContent = `Album ${current + 1}`;
+};
+
+document.getElementById("prevBtn").onclick = () => {
+  current = (current - 1 + photos.length) % photos.length;
+  img.src = photos[current];
+  title.textContent = `Album ${current + 1}`;
+};
+
+function closeDialog() {
+  dlg.close();
+}
+
+dlg.showModal();
+</script>
+
+</body>
+</html>

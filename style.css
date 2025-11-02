@@ -1,0 +1,216 @@
+* {
+    margin: 0; /* Entfernt alle äußeren Abstände, keine zusätzliche style von Browser */
+    box-sizing: border-box; /* Padding und Border werden zur Breite/Höhe hinzugezählt */
+    font-family: "Raleway", sans-serif; /* Schriftart für die gesamte Seite */
+    font-size: 24px; /* Grundschriftgröße */
+    font-weight: 400; /* Normaler Schriftstil(Regular) */
+    text-decoration: none;
+}
+html,
+body {
+    /* Setzt Höhe auf 100 % und entfernt Standardabstände,damit das Flex-Layout über die gesamte Seite funktioniert */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Der Body wird als Spalten-Flexcontainer angezeigt. min-height: 100dvh sorgt dafür, dass der Inhalt immer mindestens die volle Höhe des Viewports einnimmt. */
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    background-color: rgb(7,24,32);
+}
+
+main {
+    /* Der Hauptbereich wächst, um den freien Raum zwischen Header und Footer auszufüllen. */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+header {               /* Verhindert, dass der Header beim Skalieren schrumpft. */
+    flex-shrink: 0;
+}
+
+footer {
+    margin-top: auto; /* Schiebt den Footer automatisch nach unten, sodass er immer am unteren Rand bleibt. */
+}
+
+.brand {
+    background-color: rgb(10, 34, 44);
+    display: flex;
+    align-items: center;
+    padding: 32px;
+    gap: 8px;
+
+    .logo-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .logo-text {
+        font-size: 32px;
+        font-weight: 700;
+        color: #fff;
+    }
+}
+
+.heroCss {
+    h1 {
+        font-size: 64px;
+        font-weight: 700;
+        margin-top: 150px;
+        color: #fff;
+        font-family: "Raleway", sans-serif;
+        font-style: normal;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 48px;
+    }
+
+    .galleryCSS {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        cursor: pointer;
+    }
+
+    .mySelectedImg {
+        width: 150px;
+        height: 150px;
+        border-radius: 16px;
+        &:hover {
+            /* Vergrößert das Element leicht, wenn die Maus darüber fährt (Hover-Effekt) */
+            transform: scale(
+                1.2
+            ); /*transform ist eine CSS-Eigenschaft, mit der du ein Element verschieben, drehen, skalieren oder kippen kannst. scale(…) verändert die Größe eines Elements. */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Fügt einen weichen Schatten unter dem Element hinzu, um es hervorzuheben */
+            transition: 0.5s; /* Sorgt dafür, dass die Transformation und der Schatten sanft innerhalb von 0.3 Sekunden animiert werden statt sofort zu springen-> 0.3s = 0,3 Sekunden Dauer der Animation.*/
+        }
+    }
+}
+
+.ftr-branding {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: rgb(10, 34, 44);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    .logoAndBrand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+
+        .logo-icon {
+            width: 96px;
+            height: 48px;
+            &:hover {
+                transform: scale(2);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                transition: 0.3s;
+            }
+        }
+        .logo-text {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            &:hover {
+                transform: scale(0.9);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                transition: 0.3s;
+            }
+        }
+    }
+}
+.copyRight {
+    color: #fff;
+    font-size: 24px;
+}
+
+.dlgClass {
+    background-color: rgb(10, 34, 44);
+    border-color: #fff;
+    width: 1000px;
+    height: 620px;
+    border-radius: 24px;
+    position: fixed;
+    top: 50%; /*Positioniert die obere linke Ecke des Dialogs-  genau in der Mitte des Bildschirms.(Das Element selbst ist aber noch nicht perfekt zentriert, dafür braucht man zusätzlich „transform: translate(-50%, -50%)“.)*/
+    left: 50%;
+    transform: translate(
+        -50%,
+        -50%
+    ); /*Verschiebt das Dialogfenster um 50% seiner eigenen Breite nach links und um 50% seiner eigenen Höhe nach oben. Dadurch wird das Fenster exakt zentriert*/
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(1px);
+    }
+    .headDlgClass,
+    .BtmDlgClass {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 6px;
+    }
+
+    .headDlgClass {
+        margin-left: 36px;
+        margin-right: 36px;
+    }
+    .BtmDlgClass {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 4px;
+    }
+    .Albums-ContainerCSS {
+        .dialogImgCSS {
+            border-radius: 24px;
+            width: 945px;
+            height: 430px;
+        }
+
+        #dialogImg {
+            &:focus {
+                border: 4px solid #ff4444; 
+                border-radius: 16px; 
+                transform: scale(1.01);
+                transition: box-shadow 0.5s ease, transform 0.2s ease;
+            }
+        }
+    }
+    .h2_dialogTitleCSS {
+        font-size: 24px;
+        font-weight: 700;
+        color: white;
+    }
+    .P-albumNameCSS {
+        font-size: 24px;
+        font-weight: 700;
+        color: white;
+    }
+    .btnGeneral {
+        color: white;
+        font-weight: 700;
+        background-color: red;
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+    }
+    .btnhead {
+        border-radius: 12px;
+    }
+    .btmbtnStyle {
+        margin-top: 18px;
+        border-radius: 16px;
+        position: relative;
+  z-index: 10;
+    }
+}
