@@ -3,80 +3,80 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="icon"
-            type="image/svg+xml"
-            href="img/persian-farvahar-silhouette.svg"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        />
-
+        <link rel="icon" type="image/svg+xml" href="img/persian-farvahar-silhouette.svg" />
+        <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
         <link rel="stylesheet" href="style.css" />
         <title>Photo Gallery</title>
     </head>
-    <body>
+
+    <body onload="renderGallery()">
         <main>
-            <header>
-                <nav class="brand">
+            <div class="contentLimitaition">
+
+             <header class="brand">
+                 <div class="headLimittation">
                     <img class="logo-icon" src="img/favicon.png" alt="icon" />
                     <p class="logo-text">Fotogram</p>
-                </nav>
+                 </div>
+
+
             </header>
 
             <section class="heroCss">
-                <h1>Your Photo Gallery</h1>
-                <div class="galleryCSS" id="galleryJS"></div>
-                <dialog
-                    id="dlgID"
-                    class="dlgClass"
-                    aria-labelledby="dialogTitle"
-                    aria-describedby="Albums-Container"
-                >
-                    <header class="headDlgClass" id="headDlgID">
-                        <h2 id="h2_dialogTitle" class="h2_dialogTitleCSS"></h2>
-                        <p id="P-albumName" class="P-albumNameCSS"></p>
-                        <button onclick="closeDialog()" class="btnhead btnGeneral" aria-label="Close Album"  tabindex="0">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </header>
+                <div class="galleryLimittaion">
+                    <h1>Your Photo Gallery</h1>
+                   <div class="galleryCSS" id="galleryJS"></div>
+                   <dialog id="dlgID" class="dlgClass" aria-labelledby="dialogTitle" aria-describedby="Albums-Container">
 
-                    <section id="Albums-Container" class="Albums-ContainerCSS">
-                        <figure>
+                       <header class="headDlgClass" id="headDlgID">
+                           <h2 id="h2DialogTitle" class="h2DialogTitleCSS"></h2>
+                           <p id="pAlbumName" class="pAlbumNameCSS"></p>
+                            <button onclick="closeDialog()" class="btnhead btnGeneral" aria-label="Close Album"  tabindex="0">
+                                 <i class="fas fa-times"></i>
+                            </button>
+                        </header>
 
-                            <img id="dialogImg" class="dialogImgCSS" src="" alt="Album photo" tabindex="0"/>
+                       <section id="Albums-Container" class="AlbumsContainerCSS">
 
-                            <figcaption id="P-albumName" class="P-albumNameCSS">
-                            </figcaption>
+                           <figure>
+                               <img id="dialogImg" class="dialogImgCSS" src="" alt="Album photo" tabindex="0"/>
 
-                        </figure>
-                    </section>
+                                <figcaption  class="pAlbumNameCSS">
+                                </figcaption>
+                            </figure>
 
-                    <footer id="BtmDlgID" class="BtmDlgClass">
-                        <button id="nextBtn" class="btnGeneral btmbtnStyle" aria-label="Next Album's Photo " tabindex="0">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button id="prevBtn" class="btnGeneral btmbtnStyle" aria-label="previous Album's Photo " tabindex="0">
-                            <i class="fa fa-chevron-right"></i>
-                        </button>
-                    </footer>
+                        </section>
+
+
+                        <footer id="BtmDlgID" class="BtmDlgClass">
+                            <button id="prevBtn" class="btnGeneral btmbtnStyle" aria-label="Previous Album's Photo">
+                               <i class="fa fa-chevron-left"></i> 
+                             </button>
+                             <button id="nextBtn" class="btnGeneral btmbtnStyle" aria-label="Next Album's Photo">
+                               <i class="fa fa-chevron-right"></i> 
+                            </button>
+
+                        </footer>
                 </dialog>
             </section>
+            </div>
 
             <footer>
+
+                </div>
+
+
                 <div class="ftr-branding">
+
                     <div class="logoAndBrand">
-                        <img
-                            class="logo-icon"
-                            src="img/persian-farvahar-silhouette.webp"
-                            alt="icon"
-                        />
+                        <img class="logo-icon" src="img/persian-farvahar-silhouette.webp" alt="icon" />
                         <p class="logo-text">Perspolis GmbH</p>
                     </div>
+
                     <p class="copyRight">
                         &copy; 2025 Perspolis GmbH. Alle Rechte vorbehalten.
                     </p>
+
                 </div>
                
             </footer>

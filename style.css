@@ -19,7 +19,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
-    background-color: rgb(7,24,32);
+    background-color: rgb(7, 24, 32);
 }
 
 main {
@@ -29,7 +29,7 @@ main {
     flex-grow: 1;
 }
 
-header {               /* Verhindert, dass der Header beim Skalieren schrumpft. */
+header {
     flex-shrink: 0;
 }
 
@@ -38,11 +38,21 @@ footer {
 }
 
 .brand {
+  
+    flex-shrink: 0; /* Verhindert, dass der Header beim Skalieren schrumpft. */
+    width: 100%;
     background-color: rgb(10, 34, 44);
     display: flex;
     align-items: center;
     padding: 32px;
     gap: 8px;
+      .headLimittation{
+        width: 1440px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-left: 120px;
+    }
 
     .logo-icon {
         width: 48px;
@@ -55,40 +65,49 @@ footer {
         color: #fff;
     }
 }
+.contentLimitaition {
+    .heroCss  {
+        .galleryLimittaion{
+            max-width: 1440px;
+        }
+        h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin-top: 150px;
+            color: #fff;
+            font-family: "Raleway", sans-serif;
+            font-style: normal;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
 
-.heroCss {
-    h1 {
-        font-size: 64px;
-        font-weight: 700;
-        margin-top: 150px;
-        color: #fff;
-        font-family: "Raleway", sans-serif;
-        font-style: normal;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 48px;
-    }
+        .galleryCSS {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            cursor: pointer;
+        }
 
-    .galleryCSS {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 8px;
-        cursor: pointer;
-    }
-
-    .mySelectedImg {
-        width: 150px;
-        height: 150px;
-        border-radius: 16px;
-        &:hover {
-            /* Vergrößert das Element leicht, wenn die Maus darüber fährt (Hover-Effekt) */
-            transform: scale(
-                1.2
-            ); /*transform ist eine CSS-Eigenschaft, mit der du ein Element verschieben, drehen, skalieren oder kippen kannst. scale(…) verändert die Größe eines Elements. */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Fügt einen weichen Schatten unter dem Element hinzu, um es hervorzuheben */
-            transition: 0.5s; /* Sorgt dafür, dass die Transformation und der Schatten sanft innerhalb von 0.3 Sekunden animiert werden statt sofort zu springen-> 0.3s = 0,3 Sekunden Dauer der Animation.*/
+        .mySelectedImg {
+            &:focus {
+                transform: scale(1.05);
+                outline: 3px solid #ff4444;
+                border: 4px;
+            }
+            width: 100px;
+            height: 100px;
+            border-radius: 16px;
+            &:hover {
+                /* Vergrößert das Element leicht, wenn die Maus darüber fährt (Hover-Effekt) */
+                transform: scale(
+                    1.05
+                ); /*transform ist eine CSS-Eigenschaft, mit der du ein Element verschieben, drehen, skalieren oder kippen kannst. scale(…) verändert die Größe eines Elements. */
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Fügt einen weichen Schatten unter dem Element hinzu, um es hervorzuheben */
+                transition: 0.5s; /* Sorgt dafür, dass die Transformation und der Schatten sanft innerhalb von 0.3 Sekunden animiert werden statt sofort zu springen-> 0.3s = 0,3 Sekunden Dauer der Animation.*/
+            }
         }
     }
 }
@@ -111,35 +130,26 @@ footer {
         .logo-icon {
             width: 96px;
             height: 48px;
-            &:hover {
-                transform: scale(2);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                transition: 0.3s;
-            }
         }
         .logo-text {
             font-size: 32px;
             font-weight: 700;
             color: #fff;
             margin-bottom: 8px;
-            &:hover {
-                transform: scale(0.9);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                transition: 0.3s;
-            }
         }
     }
-}
-.copyRight {
-    color: #fff;
-    font-size: 24px;
+    .copyRight {
+        color: #fff;
+        font-size: 24px;
+    }
 }
 
 .dlgClass {
     background-color: rgb(10, 34, 44);
     border-color: #fff;
-    width: 1000px;
-    height: 620px;
+    width: 800px;
+    height: 600px;
+    overflow: hidden;
     border-radius: 24px;
     position: fixed;
     top: 50%; /*Positioniert die obere linke Ecke des Dialogs-  genau in der Mitte des Bildschirms.(Das Element selbst ist aber noch nicht perfekt zentriert, dafür braucht man zusätzlich „transform: translate(-50%, -50%)“.)*/
@@ -165,33 +175,31 @@ footer {
         margin-right: 36px;
     }
     .BtmDlgClass {
+
         display: flex;
         justify-content: space-around;
         align-items: center;
         margin-top: 4px;
     }
-    .Albums-ContainerCSS {
+    .AlbumsContainerCSS {
         .dialogImgCSS {
             border-radius: 24px;
-            width: 945px;
-            height: 430px;
-        }
-
-        #dialogImg {
+            width: 755px;
+            height: 440px;
             &:focus {
-                border: 4px solid #ff4444; 
-                border-radius: 16px; 
+                border: 4px solid #ff4444;
+                border-radius: 16px;
                 transform: scale(1.01);
                 transition: box-shadow 0.5s ease, transform 0.2s ease;
             }
         }
     }
-    .h2_dialogTitleCSS {
+    .h2DialogTitleCSS {
         font-size: 24px;
         font-weight: 700;
         color: white;
     }
-    .P-albumNameCSS {
+    .pAlbumNameCSS {
         font-size: 24px;
         font-weight: 700;
         color: white;
@@ -208,9 +216,338 @@ footer {
         border-radius: 12px;
     }
     .btmbtnStyle {
-        margin-top: 18px;
+        margin-top: 4px;
         border-radius: 16px;
         position: relative;
-  z-index: 10;
+        z-index: 10;
     }
+}
+
+
+/*Media-Querry für thumb bilder und h1 und footer*/
+@media (max-width: 1600px) {
+    .contentLimitaition .heroCss h1 {
+        margin: 50px;
+    }
+    .contentLimitaition .heroCss .galleryCSS {
+        margin: 20px;
+    }
+}
+
+
+@media (max-width: 970px) {
+    .contentLimitaition .heroCss h1 {
+        margin-top: 50px;
+    }
+    .contentLimitaition .heroCss .galleryCSS {
+        margin-top: 20px;
+    }
+}
+
+
+
+@media (max-width: 950px) {
+
+    .brand .headLimittation{
+        margin-left: 60px;
+    }
+    .contentLimitaition .heroCss h1 {
+        margin: 50px;
+    }
+    .contentLimitaition .heroCss .galleryCSS {
+        margin: 20px;
+    }
+}
+
+
+
+@media (max-width: 685px) {
+    .brand .headLimittation{
+        margin-left: 30px;
+    }
+    
+    .contentLimitaition .heroCss h1 {
+        font-size: 48px;
+    }
+    .contentLimitaition .heroCss .mySelectedImg {
+        width: 100px;
+        height: 100px;
+    }
+    .ftr-branding .logoAndBrand .logo-icon {
+        width: 48px;
+        height: 36px;
+    }
+    .ftr-branding .logoAndBrand .logo-text {
+        font-size: 24px;
+        font-weight: 700;
+      
+    }
+    .ftr-branding .copyRight {
+        font-size: 16px;
+    }
+}
+
+
+
+@media (max-width: 530px) {
+    .contentLimitaition .heroCss h1 {
+        font-size: 36px;
+    }
+}
+
+
+
+@media (max-width: 425px) {
+    .contentLimitaition .heroCss h1 {
+        font-size: 24px;
+    }
+}
+
+
+
+
+@media (max-width: 383px) {
+      .ftr-branding .copyRight {
+        font-size: 8px;
+    }
+}
+
+
+
+
+@media (max-width: 370px) {
+   
+    .contentLimitaition .heroCss .mySelectedImg {
+        width: 80px;
+        height: 80px;
+    }
+    .ftr-branding .logoAndBrand .logo-icon {
+        width: 48px;
+        height: 36px;
+    }
+      .ftr-branding .logoAndBrand .logo-text {
+        font-size: 16px;
+        font-weight: 700;
+      
+    }
+}
+
+
+
+/* media query für Dialog-Bild*/
+@media (max-width: 855px) {  
+ .dlgClass {
+    width: 600px;
+ }   
+ .dlgClass .AlbumsContainerCSS .dialogImgCSS{
+    width: 550px;
+    height: 450px;
+}
+
+}
+
+@media (max-width: 640px) {
+  .dlgClass {
+    width: 500px;
+  } 
+  .dlgClass .headDlgClass {
+    margin-left: 0;
+    margin-right: 0;
+        
+    }
+ .dlgClass .AlbumsContainerCSS .dialogImgCSS{
+    width: 460px;
+    height: 450px;
+}
+
+}
+
+@media (max-width: 560px) {
+    .contentLimitaition .brand .logo-text{
+    font-size: 16px;
+    }
+     .contentLimitaition .brand .logo-icon{
+     width: 36px;
+     height: 36px;
+    }
+
+  .dlgClass {
+    width: 450px;
+  } 
+  .dlgClass .headDlgClass {
+    margin-left: 0;
+    margin-right: 0;
+        
+    }
+ .dlgClass .AlbumsContainerCSS .dialogImgCSS{
+    width: 410px;
+    height: 450px;
+}
+
+}
+
+@media (max-width: 500px) {
+  .dlgClass {
+    width: 400px;
+  } 
+  .dlgClass .headDlgClass {
+    margin-left: 0;
+    margin-right: 0;
+        
+    }
+ .dlgClass .AlbumsContainerCSS .dialogImgCSS{
+    width: 380px;
+    height: 450px;
+}
+
+}
+
+@media (max-width: 460px) {
+  
+   .ftr-branding .logoAndBrand .logo-text {
+        font-size: 16px;
+    }
+    .ftr-branding  .copyRight {
+        font-size: 12px;
+    }
+  .dlgClass {
+    width: 350px;
+  } 
+  .dlgClass .headDlgClass {
+    margin-left: 0;
+    margin-right: 0;
+        
+    }
+ .dlgClass .AlbumsContainerCSS .dialogImgCSS{
+    width: 300px;
+    height: 450px;
+}
+
+}
+
+@media (max-width: 395px) {
+  .dlgClass {
+    padding: 12px;
+    width: 300px;
+    height: 500px;
+  } 
+  .dlgClass .headDlgClass {
+    margin-left: 0;
+    margin-right: 0;    
+    }
+  
+  .dlgClass .headDlgClass .h2DialogTitleCSS   {
+    font-size: 20px;
+  }  
+
+    .dlgClass .headDlgClass .pAlbumNameCSS {
+    font-size: 20px;
+  }  
+
+ .dlgClass .AlbumsContainerCSS .dialogImgCSS{
+    width: 270px;
+    height: 350px;
+}
+  .dlgClass .BtmDlgClass .btnGeneral.btmbtnStyle {
+    width: 30px;
+    height: 40px;
+   
+  }
+ .dlgClass .headDlgClass .btnhead {
+    width: 30px;
+    height: 40px;
+
+ }
+}
+
+
+@media (max-width: 352px) {
+  .dlgClass {
+    padding: 2px;
+    width: 300px;
+    height: 450px;
+  } 
+  .dlgClass .headDlgClass {
+    margin-left: 0;
+    margin-right: 0;    
+    }
+  
+  .dlgClass .headDlgClass .h2DialogTitleCSS   {
+    font-size: 12px;
+  }  
+
+    .dlgClass .headDlgClass .pAlbumNameCSS {
+    font-size: 12px;
+  }  
+
+ .dlgClass .AlbumsContainerCSS .dialogImgCSS{
+    width: 280px;
+    height: 350px;
+}
+  .dlgClass .BtmDlgClass .btnGeneral.btmbtnStyle {
+    width: 35px;
+    height: 35px;
+    margin-top: 0;
+    margin-bottom: 4px;
+   
+  }
+ .dlgClass .headDlgClass .btnhead  {
+    width: 35px;
+    height: 35px;
+    margin: 0;
+
+ }
+
+.dlgClass .headDlgClass{
+    display: flex;
+    justify-content: space-around;
+}
+}
+
+
+@media (max-width: 346px) {
+    .contentLimitaition .brand .logo-text{
+        font-size: 16px;
+    }
+    .contentLimitaition .brand .logo-icon{
+        width: 36px;
+        height: 36px;
+    }
+  .dlgClass {
+    padding: 2px;
+    width: 250px;
+    height: 450px;
+  } 
+  .dlgClass .headDlgClass {
+    margin-left: 0;
+    margin-right: 0;    
+    }
+  
+
+ 
+
+ .dlgClass .AlbumsContainerCSS .dialogImgCSS{
+    width: 235px;
+    height: 350px;
+}
+  .dlgClass .BtmDlgClass .btnGeneral.btmbtnStyle {
+    width: 35px;
+    height: 35px;
+    margin-top: 0;
+    margin-bottom: 4px;
+   
+  }
+ .dlgClass .headDlgClass .btnhead  {
+    width: 35px;
+    height: 35px;
+    margin: 0;
+
+ }
+
+.dlgClass .headDlgClass{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 4px;
+    padding-left: 4px;
+}
 }
