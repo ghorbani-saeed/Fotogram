@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📸 Fotogram – Photo Gallery
 Eine interaktive und barrierefreie Fotogalerie mit Miniaturansichten, Großansicht und Tastatursteuerung.
 
@@ -46,3 +47,7 @@ Siehe die Datei LICENSE für weitere Details.
 Saeed Ghorbani
 📧 ghorbani.saeed@web.de
 🌐 https://github.com/ghorbani-saeed
+=======
+# Fotogram
+Eine interaktive und barrierefreie Fotogalerie mit Miniaturansichten, Großansicht und Tastatursteuerung.
+>>>>>>> fbe5eea20bd26f154df7aa49edb036f049147566
